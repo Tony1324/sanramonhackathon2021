@@ -7,9 +7,11 @@ document.querySelector("#sign-in").addEventListener("click", ()=>{
 })
 let unsub;
 let user;
+let isSignedIn = false
 firebase.auth().onAuthStateChanged((user)=>{
     if(user){
         window.user=user
+        isSignedIn = true
         document.querySelector("#sign-in").innerHTML = "logged in"
         document.querySelector("#firebaseui-auth-container").style.display = "none"
         document.querySelector("#sign-out").style.display = "flex"
@@ -29,6 +31,7 @@ firebase.auth().onAuthStateChanged((user)=>{
         })
 
     }else{
+        isSignedIn = false
         unsub?.()
         document.querySelector("#sign-in").innerHTML = "log in"
         document.querySelector("#firebaseui-auth-container").style.display = "block"
@@ -71,7 +74,7 @@ document.querySelector("#website-search").addEventListener("keyup", (e)=>{
 let isRequest = false
 
 function writeRating(){
-    if(user){
+    if(isSignedIn){
         document.querySelector('#rating-composer').style.display='block';
         document.querySelector('#rating-url').value = document.querySelector('#website-search').value
     }else{
@@ -127,7 +130,7 @@ function cancelRating(){
 
 
 function addRequest(){
-    if(user){
+    if(isSignedIn){
         let url = prompt("Enter a url review request")
         if(url.trim() && validURL(url)){
             firebase.firestore().collection("requests").add({
