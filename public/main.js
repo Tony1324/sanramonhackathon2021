@@ -6,6 +6,7 @@ document.querySelector("#sign-in").addEventListener("click", ()=>{
     }
 })
 let unsub;
+let user;
 firebase.auth().onAuthStateChanged((user)=>{
     if(user){
         window.user=user
@@ -74,7 +75,7 @@ function writeRating(){
         document.querySelector('#rating-composer').style.display='block';
         document.querySelector('#rating-url').value = document.querySelector('#website-search').value
     }else{
-        document.querySelector("#sign-in-pop-up").style.display = "block"
+        document.querySelector("#sign-in-pop-up").style.display = "flex"
     }
 }
 
