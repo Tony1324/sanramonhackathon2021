@@ -1,6 +1,6 @@
 document.querySelector("#sign-in").addEventListener("click", ()=>{
-    if(document.querySelector("#sign-in-pop-up").style.display != "block"){
-        document.querySelector("#sign-in-pop-up").style.display = "block"
+    if(document.querySelector("#sign-in-pop-up").style.display != "flex"){
+        document.querySelector("#sign-in-pop-up").style.display = "flex"
     }else{
         document.querySelector("#sign-in-pop-up").style.display = "none"
     }
@@ -11,7 +11,7 @@ firebase.auth().onAuthStateChanged((user)=>{
         window.user=user
         document.querySelector("#sign-in").innerHTML = "logged in"
         document.querySelector("#firebaseui-auth-container").style.display = "none"
-        document.querySelector("#sign-out").style.display = "block"
+        document.querySelector("#sign-out").style.display = "flex"
         window.uid = user.uid
         unsub?.()
         ubsub = firebase.firestore().collection('users').doc(uid).onSnapshot(doc => {
@@ -28,7 +28,7 @@ firebase.auth().onAuthStateChanged((user)=>{
         })
 
     }else{
-        unsub()
+        unsub?.()
         document.querySelector("#sign-in").innerHTML = "log in"
         document.querySelector("#firebaseui-auth-container").style.display = "block"
         document.querySelector("#sign-out").style.display = "none"
