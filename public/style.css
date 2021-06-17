@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+html,body{
+    margin:0;
+    padding:0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+button {
+    font-family: 'Open Sans', sans-serif;
+    font-size:12px;
+    padding:5px;
+    background-color:white;
+    border: 1px solid rgb(240,240,240);
+    border-radius: 5px;
+    transition: all 0.15s;
+}
+
+button:hover{
+    transform:scale(1.05);
+    background-color: rgba(245,245,245)
+}
+
+button:active{
+    transform:scale(0.99);
+    background-color: rgba(235,235,235)
+}
+
+nav{
+    display:flex;
+    background-color: rgb(120,144,255);
+    align-items: center;
+    padding:0 20px;
+    color:white;
+}
+
+h3, h4,p{
+    margin: 4px 0;
+}
+
+.spacer{
+    flex-grow: 1;
+}
+
+.horizontal{
+    display:flex;
+    align-items: center;
+}
+
+#main-container{
+    width:100%;
+    height:100%;
+    max-width: 800px;
+    margin:auto;
+    padding:5px;
+}
+
+#sign-in-pop-up{
+    position: fixed;
+    top:50%;
+    left:50%;
+    display:none;
+    transform: translate(-50%,-50%);
+    padding:5px;
+    border-radius:5px;
+    box-shadow:0px 10px 20px rgba(0,0,0,0.1);
+    width:250px;
+}
+
+#ratings-container{
+    padding-top:150px;
+    margin-bottom: 40px;
+}
+
+input{
+    width:100%;
+    height:3em;
+    display:block;
+    box-sizing:border-box;
+    padding:5px;
+    font-size:14px;
+    background-color:white;
+    border:1px solid rgb(220,220,220);
+    font-family: "Open Sans", sans-serif;
+    border-radius:5px;
+    margin:10px 0;
+}
+
+#write-rating, #add-request{
+    margin: 5px 0;
+    font-size:14px;
+    background-color: rgb(120,144,255);
+    color:white;
+    border:none;
+}
+
+#rating-composer{
+    padding:10px;
+    border: 1px solid rgb(220,220,220);
+    border-radius:5px;
+    margin: 10px 0;
+    display:none;
+}
+
+#bias-input{
+    width:calc(100% - 10px);
+}
+
+#rating-comments{
+    width:calc(100% - 10px);
+    resize: vertical;
+    border:1px solid rgb(220,220,220);
+    border-radius: 5px;
+}
+
+.rating, .request{
+    padding:10px;
+    border: 1px solid rgb(220,220,220);
+    border-radius:5px;
+    margin: 10px 0;
+}
+
+
+.bias-meter{
+    width:100%;
+    height:25px;
+    border-radius:15px;
+    background: linear-gradient(90deg, blue, red)
+}
+
+.bias-label{
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    position: relative;
+    top:2.5px;
+    background-color:white;
+}

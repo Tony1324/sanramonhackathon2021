@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Website Checker</title>
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.css" />
+ 
+        
+    <script src="/__/firebase/8.6.7/firebase-app.js"></script>
+    <script src="/__/firebase/8.6.7/firebase-auth.js"></script>
+    <script src="/__/firebase/8.6.7/firebase-firestore.js"></script>
+    <script src="/__/firebase/8.6.7/firebase-functions.js"></script>
+    <script src="/__/firebase/init.js?useEmulator=true"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.js"></script>
+    <script>
+        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+        ui.start('#firebaseui-auth-container', {
+            signInSuccessUrl:"/",
+            signInOptions: [
+                firebase.auth.EmailAuthProvider.PROVIDER_ID,
+                firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            ],
+            // Other config options...
+        });
+    </script>
+
+
+    <script defer src = "main.js"></script>
+  </head>
+  <body>
+
+    <nav>
+        <h1>Website Checker</h1>
+        <div class="spacer"></div>
+        <p id="score">Score: 0</p>
+        <div class="spacer"></div>
+        <button id="sign-in">Log in</button>
+    </nav>
+
+    <div id="sign-in-pop-up">
+        <div id="firebaseui-auth-container"></div>
+        <button id="sign-out" onclick="firebase.auth().signOut()">Sign out</button>
+    </div>
+    <div id="main-container">
+        <div id="ratings-container">
+            <h3>Search</h3>
+            <input type="text" value="" id="website-search" placeholder="Enter Website Url">
+            <button id="write-rating" onclick="writeRating()">
+                Write rating
+            </button>
+            <div id="rating-composer">
+                <h4>Url:</h4>
+                <input type="text" value="" id="rating-url" placeholder="Enter Website Url">
+                <h4>Bias:</h4>
+                <input type="range" id="bias-input" min="-100" max="100" value="0">
+                <h4>Comments:</h4>
+                <textarea id="rating-comments" cols="30" rows="10"></textarea>
+                <div class="horizontal">
+                    <button id="submit-rating" onclick="submitRating()">Submit</button>
+                    <button id="cancel-rating" onclick="cancelRating()">Cancel</button>
+                </div>
+            </div>
+            <div id="search-results">
+
+            </div>
+        </div>
+        <div id="requests-container">
+            <h3>Requests</h3> 
+            <button onclick="addRequest()" id="add-request">Add Request</button>
+            <div id="requests-results">
+
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
